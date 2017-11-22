@@ -2,6 +2,8 @@
 
 CREATE DATABASE MoviesTonight;
 
+USE MoviesTonight;
+
 CREATE TABLE Artist (
 	ID int (11) NOT NULL auto_increment,
     AName varchar(50) default NULL,
@@ -39,7 +41,7 @@ CREATE TABLE Theater (
 );
 
 ALTER TABLE Credit 
-	ADD FOREIGN KEY ArtistID 
+	ADD FOREIGN KEY (ArtistID) 
 		REFERENCES Artist (ID);
 
 ALTER TABLE Credit 
@@ -50,4 +52,6 @@ ALTER TABLE Showtime
 	ADD FOREIGN KEY (TheaterID)
 		REFERENCES Theater (ID);
 
-ALTER TABLE Showtime ADD FOREIGN KEY
+ALTER TABLE Showtime 
+	ADD FOREIGN KEY (MovieID)
+		REFERENCES Movie (ID);
